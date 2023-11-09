@@ -1,0 +1,40 @@
+[package]
+name = "timer-app"
+version = "0.0.0"
+description = "A Tauri App"
+authors = ["you"]
+license = ""
+repository = ""
+edition = "2021"
+
+# See more keys and their definitions at https://doc.rust-lang.org/cargo/reference/manifest.html
+
+[build-dependencies]
+tauri-build = { version = "1.5", features = [] }
+
+[dependencies]
+tauri = { version = "1.5", features = ["shell-open"] }
+serde = { version = "1.0.190", features = ["derive"] }
+serde_json = "1.0.108"
+sqlx = { version = "0.7.2", features = [
+    "macros",
+    "runtime-tokio",
+    "postgres",
+    "chrono",
+    "uuid",
+] }
+dirs = "5.0.1"
+tracing = "0.1.40"
+tracing-subscriber = "0.3.17"
+uuid = { version = "1.5.0", features = ["serde", "v4"] }
+chrono = { version = "0.4.31", features = ["serde"] }
+async-std = { version = "1", features = ["attributes"] }
+dotenv = "0.15.0"
+env_logger = "0.10.0"
+tokio = { version = "1.33.0", features = ["full"] }
+futures-util = "0.3.29"
+
+[features]
+# this feature is used for production builds or when `devPath` points to the filesystem
+# DO NOT REMOVE!!
+custom-protocol = ["tauri/custom-protocol"]
